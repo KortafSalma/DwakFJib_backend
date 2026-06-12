@@ -1,4 +1,4 @@
-FROM php:8.3-fpm-alpine AS builder
+FROM php:8.3-fpm-alpine3.19 AS builder
 
 WORKDIR /var/www/html
 
@@ -49,7 +49,7 @@ RUN mkdir -p storage/framework/{cache,sessions,views} \
     bootstrap/cache \
     && chmod -R 755 storage bootstrap/cache
 
-FROM php:8.3-fpm-alpine
+FROM php:8.3-fpm-alpine3.19
 
 WORKDIR /var/www/html
 
