@@ -93,7 +93,7 @@ class StockService
                 'quantity' => $stockBefore,
                 'stock_before' => $stockBefore,
                 'stock_after' => 0,
-=                'reason' => 'Medication expired',
+                   'reason' => 'Medication expired',
             ]);
 
             $medication->update(['stock' => 0]);
