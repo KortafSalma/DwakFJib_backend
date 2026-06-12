@@ -55,14 +55,12 @@ WORKDIR /var/www/html
 
 RUN apk add --no-cache \
     mysql-client \
-    && docker-php-ext-install \
-    pdo_mysql \
-    mysqli \
-    mbstring \
-    exif \
-    pcntl \
-    bcmath \
-    gd
+    oniguruma \
+    libpng \
+    libxml2
+
+COPY --from=builder /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
+COPY --from=builder /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
 
 COPY --from=builder /var/www/html .
 
