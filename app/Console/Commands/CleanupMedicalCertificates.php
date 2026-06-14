@@ -17,7 +17,7 @@ class CleanupMedicalCertificates extends Command
         $days = (int) $this->option('days');
         $cutoffDate = now()->subDays($days);
 
-        $expiredCertificates = MedicalCertificate::where('expires_at', '<', $cutoffDate)
+        $expiredCertificates = MedicalCertificate::where('expiry_date', '<', $cutoffDate)
             ->orWhere('created_at', '<', $cutoffDate)
             ->get();
 

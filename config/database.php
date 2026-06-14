@@ -1,6 +1,6 @@
 <?php
 
-use Pdo\Mysql;
+use PDO\Mysql;
 
 return [
 

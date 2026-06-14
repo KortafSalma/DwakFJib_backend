@@ -15,10 +15,10 @@ class PaymentFactory extends Factory
     {
         return [
             'order_id' => Order::factory(),
-            'amount' => fake()->randomFloat(2, 50, 5000),
-            'payment_method' => fake()->randomElement(['CREDIT_CARD', 'DEBIT_CARD', 'BANK_TRANSFER', 'WALLET']),
-            'status' => fake()->randomElement(['PENDING', 'COMPLETED', 'FAILED', 'REFUNDED']),
-            'transaction_id' => 'TXN-' . strtoupper(fake()->unique()->randomNumber(10)),
+            'amount' => $this->faker->randomFloat(2, 50, 5000),
+            'payment_method' => $this->faker->randomElement(['CREDIT_CARD', 'DEBIT_CARD', 'BANK_TRANSFER', 'WALLET']),
+            'status' => $this->faker->randomElement(['PENDING', 'COMPLETED', 'FAILED', 'REFUNDED']),
+            'transaction_id' => 'TXN-' . strtoupper($this->faker->unique()->randomNumber(10)),
         ];
     }
 }

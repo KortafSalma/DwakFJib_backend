@@ -16,7 +16,7 @@ class ReservationFactory extends Factory
     public function definition(): array
     {
         $medication = Medication::factory()->create();
-        $quantity = fake()->numberBetween(1, 5);
+        $quantity = $this->faker->numberBetween(1, 5);
 
         return [
             'user_id' => User::factory(),
@@ -24,7 +24,7 @@ class ReservationFactory extends Factory
             'medication_id' => $medication->id,
             'quantity' => $quantity,
             'deposit_amount' => $medication->price * $quantity * 0.5,
-            'status' => fake()->randomElement(['PENDING', 'PAID', 'CANCELLED', 'COMPLETED']),
+            'status' => $this->faker->randomElement(['PENDING', 'PAID', 'CANCELLED', 'COMPLETED']),
         ];
     }
 }

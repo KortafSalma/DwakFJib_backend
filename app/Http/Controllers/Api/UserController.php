@@ -67,10 +67,7 @@ class UserController extends Controller
         }
 
         $pharmacies = Pharmacy::verified()
-            ->selectRaw("*, (6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude)))) AS distance",
-                [$latitude, $longitude, $latitude])
-            ->having('distance', '<=', $radius)
-            ->orderBy('distance')
+            ->nearby($latitude, $longitude, $radius)
             ->paginate(15);
 
         return response()->json([

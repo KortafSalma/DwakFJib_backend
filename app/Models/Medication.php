@@ -93,10 +93,10 @@ class Medication extends Model
     public function scopeSearch($query, $term)
     {
         return $query->where(function ($q) use ($term) {
-            $q->where('name', 'ilike', "%{$term}%")
-              ->orWhere('description', 'ilike', "%{$term}%")
-              ->orWhere('category', 'ilike', "%{$term}%")
-              ->orWhere('dosage', 'ilike', "%{$term}%");
+            $q->where('name', 'like', "%{$term}%")
+              ->orWhere('description', 'like', "%{$term}%")
+              ->orWhere('category', 'like', "%{$term}%")
+              ->orWhere('dosage', 'like', "%{$term}%");
         });
     }
 

@@ -16,9 +16,9 @@ class ReviewFactory extends Factory
         return [
             'user_id' => User::factory(),
             'pharmacy_id' => Pharmacy::factory(),
-            'rating' => fake()->numberBetween(1, 5),
-            'comment' => fake()->optional()->paragraph(),
-            'is_verified' => fake()->boolean(),
+            'rating' => $this->faker->numberBetween(1, 5),
+            'comment' => $this->faker->optional()->paragraph(),
+            'is_verified' => $this->faker->boolean(),
         ];
     }
 }

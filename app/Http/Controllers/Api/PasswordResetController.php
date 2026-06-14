@@ -25,14 +25,10 @@ class PasswordResetController extends Controller
             ], 403);
         }
 
-        $token = Password::createToken($user);
-
-        $resetUrl = config('app.frontend_url') . "/reset-password?token={$token}&email={$request->email}";
+        Password::sendResetLink($request->only('email'));
 
         return response()->json([
-            'message' => 'Password reset link sent',
-            'reset_url' => $resetUrl,
-            'token' => $token,
+            'message' => 'If the email exists, a password reset link has been sent.',
         ]);
     }
 

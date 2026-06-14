@@ -14,12 +14,12 @@ class AuditLogFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'action' => fake()->randomElement(['created', 'updated', 'deleted']),
-            'auditable_type' => fake()->randomElement(['App\Models\Medication', 'App\Models\Reservation', 'App\Models\Order']),
-            'auditable_id' => fake()->numberBetween(1, 100),
-            'changes' => ['field' => fake()->word()],
-            'ip_address' => fake()->ipv4(),
-            'user_agent' => fake()->userAgent(),
+            'action' => $this->faker->randomElement(['created', 'updated', 'deleted']),
+            'auditable_type' => $this->faker->randomElement(['App\Models\Medication', 'App\Models\Reservation', 'App\Models\Order']),
+            'auditable_id' => $this->faker->numberBetween(1, 100),
+            'changes' => ['field' => $this->faker->word()],
+            'ip_address' => $this->faker->ipv4(),
+            'user_agent' => $this->faker->userAgent(),
         ];
     }
 }

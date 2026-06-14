@@ -16,11 +16,11 @@ class StockMovementFactory extends Factory
         return [
             'medication_id' => Medication::factory(),
             'user_id' => User::factory(),
-            'type' => fake()->randomElement(['IN', 'OUT', 'ADJUSTMENT']),
-            'quantity' => fake()->numberBetween(1, 100),
-            'stock_before' => fake()->numberBetween(0, 500),
-            'stock_after' => fake()->numberBetween(0, 500),
-            'reason' => fake()->sentence(),
+            'type' => $this->faker->randomElement(['IN', 'OUT', 'ADJUSTMENT']),
+            'quantity' => $this->faker->numberBetween(1, 100),
+            'stock_before' => $this->faker->numberBetween(0, 500),
+            'stock_after' => $this->faker->numberBetween(0, 500),
+            'reason' => $this->faker->sentence(),
         ];
     }
 }

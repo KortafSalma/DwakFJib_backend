@@ -65,11 +65,11 @@ COPY --from=builder /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
 COPY --from=builder /var/www/html .
 
 RUN chown -R www-data:www-data storage bootstrap/cache \
-    && chmod -R 755 storage bootstrap/cache
+    && chmod -R 775 storage bootstrap/cache
 
-EXPOSE 8000
+EXPOSE ${PORT:-8000}
 
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 --start-period=40s \
-  CMD wget -qO- http://localhost:8000/api/medications || exit 1
+  CMD wget -qO- --timeout=5 http://127.0.0.1:${PORT:-8000}/ || exit 1
 
 CMD ["sh", "-c", "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000"]

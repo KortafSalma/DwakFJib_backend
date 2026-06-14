@@ -15,12 +15,12 @@ class DistributorFactory extends Factory
     {
         return [
             'user_id' => User::factory()->distributor(),
-            'name' => fake()->company(),
-            'phone' => fake()->phoneNumber(),
-            'address' => fake()->streetAddress(),
-            'city' => fake()->city(),
-            'latitude' => fake()->latitude(),
-            'longitude' => fake()->longitude(),
+            'name' => $this->faker->company(),
+            'phone' => $this->faker->phoneNumber(),
+            'address' => $this->faker->streetAddress(),
+            'city' => $this->faker->city(),
+            'latitude' => $this->faker->latitude(),
+            'longitude' => $this->faker->longitude(),
         ];
     }
 }

@@ -15,10 +15,10 @@ class NotificationFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'title' => fake()->sentence(3),
-            'message' => fake()->paragraph(),
-            'type' => fake()->randomElement(['ORDER', 'RESERVATION', 'PAYMENT', 'DELIVERY', 'ALERT']),
-            'read_at' => fake()->optional(0.7)->dateTime(),
+            'title' => $this->faker->sentence(3),
+            'message' => $this->faker->paragraph(),
+            'type' => $this->faker->randomElement(['ORDER', 'RESERVATION', 'PAYMENT', 'DELIVERY', 'ALERT']),
+            'read_at' => $this->faker->optional(0.7)->dateTime(),
         ];
     }
 }

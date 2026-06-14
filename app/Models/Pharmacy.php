@@ -67,7 +67,7 @@ class Pharmacy extends Model
         return $this->hasMany(Review::class);
     }
 
-    public function getDistanceAttribute($latitude, $longitude)
+    public function calculateDistance(float $latitude, float $longitude): float
     {
         $earthRadius = 6371;
 

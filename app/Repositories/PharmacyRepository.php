@@ -36,20 +36,14 @@ class PharmacyRepository extends BaseRepository
     public function nearby(float $latitude, float $longitude, float $radius = 10): Collection
     {
         return $this->model
-            ->selectRaw("*, (6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude)))) AS distance",
-                [$latitude, $longitude, $latitude])
-            ->having('distance', '<=', $radius)
-            ->orderBy('distance')
+            ->nearby($latitude, $longitude, $radius)
             ->get();
     }
 
     public function paginateNearby(float $latitude, float $longitude, float $radius = 10, int $perPage = 15): LengthAwarePaginator
     {
         return $this->model
-            ->selectRaw("*, (6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude)))) AS distance",
-                [$latitude, $longitude, $latitude])
-            ->having('distance', '<=', $radius)
-            ->orderBy('distance')
+            ->nearby($latitude, $longitude, $radius)
             ->paginate($perPage);
     }
 

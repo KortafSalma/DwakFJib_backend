@@ -21,12 +21,12 @@ class PharmacyFactory extends Factory
         return [
             //
             'user_id' => \App\Models\User::factory(),
-        'name' => fake()->company(),
-        'address' => fake()->address(),
-        'city' => fake()->city(),
-        'latitude' => fake()->latitude(),
-        'longitude' => fake()->longitude(),
-        'phone' => fake()->phoneNumber(),
+        'name' => $this->faker->company(),
+        'address' => $this->faker->address(),
+        'city' => $this->faker->city(),
+        'latitude' => $this->faker->latitude(),
+        'longitude' => $this->faker->longitude(),
+        'phone' => $this->faker->phoneNumber(),
         ];
     }
 }

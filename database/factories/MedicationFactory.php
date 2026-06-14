@@ -15,12 +15,12 @@ class MedicationFactory extends Factory
     {
         return [
             'pharmacy_id' => Pharmacy::factory(),
-            'name' => fake()->word() . ' ' . fake()->randomElement(['Tablet', 'Syrup', 'Injection', 'Capsule', 'Cream']),
-            'description' => fake()->sentence(),
-            'dosage' => fake()->randomElement(['100mg', '250mg', '500mg', '1g', '5ml']),
-            'stock' => fake()->numberBetween(0, 500),
-            'price' => fake()->randomFloat(2, 5, 200),
-            'category' => fake()->randomElement(['Pain Relief', 'Antibiotic', 'Vitamin', 'Antihistamine', 'Antiseptic']),
+            'name' => $this->faker->word() . ' ' . $this->faker->randomElement(['Tablet', 'Syrup', 'Injection', 'Capsule', 'Cream']),
+            'description' => $this->faker->sentence(),
+            'dosage' => $this->faker->randomElement(['100mg', '250mg', '500mg', '1g', '5ml']),
+            'stock' => $this->faker->numberBetween(0, 500),
+            'price' => $this->faker->randomFloat(2, 5, 200),
+            'category' => $this->faker->randomElement(['Pain Relief', 'Antibiotic', 'Vitamin', 'Antihistamine', 'Antiseptic']),
         ];
     }
 }

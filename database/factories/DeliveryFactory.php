@@ -17,15 +17,15 @@ class DeliveryFactory extends Factory
         return [
             'order_id' => Order::factory(),
             'distributor_id' => Distributor::factory(),
-            'tracking_number' => 'TRK-' . strtoupper(fake()->unique()->numerify('########')),
-            'status' => fake()->randomElement(DeliveryStatus::values()),
-            'carrier' => fake()->randomElement(['DHL', 'FedEx', 'UPS', 'Local Courier']),
-            'driver_name' => fake()->name(),
-            'driver_phone' => fake()->phoneNumber(),
-            'shipping_address' => fake()->address(),
-            'shipping_cost' => fake()->randomFloat(2, 5, 50),
-            'notes' => fake()->optional()->sentence(),
-            'estimated_delivery' => fake()->optional()->dateTimeBetween('+1 day', '+7 days'),
+            'tracking_number' => 'TRK-' . strtoupper($this->faker->unique()->numerify('########')),
+            'status' => $this->faker->randomElement(DeliveryStatus::values()),
+            'carrier' => $this->faker->randomElement(['DHL', 'FedEx', 'UPS', 'Local Courier']),
+            'driver_name' => $this->faker->name(),
+            'driver_phone' => $this->faker->phoneNumber(),
+            'shipping_address' => $this->faker->address(),
+            'shipping_cost' => $this->faker->randomFloat(2, 5, 50),
+            'notes' => $this->faker->optional()->sentence(),
+            'estimated_delivery' => $this->faker->optional()->dateTimeBetween('+1 day', '+7 days'),
         ];
     }
 
